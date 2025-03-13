@@ -3,17 +3,29 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./BookForm.css";
+import { useState } from "react";
 
 const BookForm = () => {
   const navigate = useNavigate();
+  const [form, setForm] =useState({    title:"",
+    author:"",
+    Description:"",
+    imgUrl:""
+})
 
   const handleSubmit = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
     e.preventDefault();
+
     // No functionality required as per assignment
     alert("Submit button clicked. No functionality implemented.");
   };
 
-  
+
 
   return (
     <div className="add-book-form-container">
